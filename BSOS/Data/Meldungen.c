@@ -6,85 +6,11 @@
 #include "Multitasking.h"
 
 
-void debugtext(void)
-{
-    SchreibeText("Test");
-}
 
 
-void handle_hardware_interrupt(struct cpu_state* cpu)
-{
-
-    switch(cpu->intr)
-    {
-    case 0:
-        HardwareMeldung0();
-        break;
-    case 1:
-        HardwareMeldung1();
-        break;
-    case 2:
-        HardwareMeldung2();
-        break;
-    case 3:
-        HardwareMeldung3();
-        break;
-    case 4:
-        HardwareMeldung4();
-        break;
-    case 5:
-        HardwareMeldung5();
-        break;
-    case 6:
-        HardwareMeldung6();
-        break;
-    case 7:
-        HardwareMeldung7();
-        break;
-    case 8:
-        HardwareMeldung8();
-        break;
-    case 9:
-        HardwareMeldung9();
-        break;
-    case 10:
-        HardwareMeldung10();
-        break;
-    case 11:
-        HardwareMeldung11();
-        break;
-    case 12:
-        HardwareMeldung12();
-        break;
-    case 13:
-        HardwareMeldung13();
-        break;
-    case 14:
-        HardwareMeldung14();
-    case 15:
-        HardwareMeldung15();
-        break;
-
-
-    default:
-        SchreibeText("Irgend etwas leuft falsch :(");
-        SchreibeText("--------------------------------------------------------------------------------");
-        SchreibeFormatiertenText("Hier ist das Ende ._.", 0x70, 'm');
-        SchreibeText("--------------------------------------------------------------------------------");
-        asm ("hlt");
-
-    }
-    if (cpu->intr >= 8)
-    {
-        outb(0xa0, 0x20);
-    }
-    else
-    {
-        outb(0x20, 0x20);
-    }
-}
-
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////    'Echte' ('Fehler') Interrupts  ///////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 void handle_interrupt(struct cpu_state* cpu)
@@ -161,15 +87,6 @@ void handle_interrupt(struct cpu_state* cpu)
         SchreibeText("--------------------------------------------------------------------------------");
         asm ("hlt");
     }
-}
-
-struct cpu_state* handle_software_interrupt(struct cpu_state* cpu)
-{
-struct cpu_state* new_cpu = cpu;
-
-new_cpu = schedule(cpu);
-    SchreibeText("Software Interrupt Hanlder");
-return new_cpu;
 }
 
 
@@ -345,6 +262,93 @@ void FehlerMeldung19(uint32_t esp)
 
 
 }
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////    Hardware Interrupts  (IRQ's) /////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+void handle_hardware_interrupt(struct cpu_state* cpu)
+{
+
+    switch(cpu->intr)
+    {
+    case 0:
+        HardwareMeldung0();
+        break;
+    case 1:
+        HardwareMeldung1();
+        break;
+    case 2:
+        HardwareMeldung2();
+        break;
+    case 3:
+        HardwareMeldung3();
+        break;
+    case 4:
+        HardwareMeldung4();
+        break;
+    case 5:
+        HardwareMeldung5();
+        break;
+    case 6:
+        HardwareMeldung6();
+        break;
+    case 7:
+        HardwareMeldung7();
+        break;
+    case 8:
+        HardwareMeldung8();
+        break;
+    case 9:
+        HardwareMeldung9();
+        break;
+    case 10:
+        HardwareMeldung10();
+        break;
+    case 11:
+        HardwareMeldung11();
+        break;
+    case 12:
+        HardwareMeldung12();
+        break;
+    case 13:
+        HardwareMeldung13();
+        break;
+    case 14:
+        HardwareMeldung14();
+    case 15:
+        HardwareMeldung15();
+        break;
+
+
+    default:
+        SchreibeText("Irgend etwas leuft falsch :(");
+        SchreibeText("--------------------------------------------------------------------------------");
+        SchreibeFormatiertenText("Hier ist das Ende ._.", 0x70, 'm');
+        SchreibeText("--------------------------------------------------------------------------------");
+        asm ("hlt");
+
+    }
+    if (cpu->intr >= 8)
+    {
+        outb(0xa0, 0x20);
+    }
+    else
+    {
+        outb(0x20, 0x20);
+    }
+}
+
+
+
 
 
 static int x=0;
@@ -593,6 +597,23 @@ void HardwareMeldung15(uint32_t esp)
 
 }
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////    Software Interrupts  /////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+struct cpu_state* handle_software_interrupt(struct cpu_state* cpu)
+{
+struct cpu_state* new_cpu = cpu;
+
+new_cpu = schedule(cpu);
+return new_cpu;
+}
 
 
 
