@@ -1,0 +1,17 @@
+#include "IDT.h"
+#include "TextMode.h"
+
+static inline void outb(uint16_t port, uint8_t data)
+{
+    asm volatile ("outb %0, %1" : : "a" (data), "Nd" (port));
+}
+
+void pit_init(int freq)
+{
+   freq = 1193182 / freq;
+   outb(0x43, 0x26);
+   outb(0x40, 1);
+   outb
+   //outb(0x40,freq & 0xFF);
+   //outb(0x40,freq >> 8);
+}

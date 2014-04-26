@@ -610,10 +610,9 @@ void HardwareMeldung15(uint32_t esp)
 struct cpu_state* handle_software_interrupt(struct cpu_state* cpu)
 {
 struct cpu_state* new_cpu = cpu;
-
 new_cpu = schedule(cpu);
-return new_cpu;
 
+return new_cpu;
 }
 
 

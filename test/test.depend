@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1395767078 source:/home/sroidl/Dokumente/BSOS/test/main.c
+	<stdio.h>
+	<stdlib.h>
+

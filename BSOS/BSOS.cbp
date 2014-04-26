@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="BSOS" />
+		<Option makefile="makefile" />
+		<Option makefile_is_custom="1" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Option virtualFolders="Data/;" />
+		<MakeCommands>
+			<Build command="$make -f $makefile " />
+			<CompileFile command="$make -f $makefile" />
+			<Clean command="$make -f $makefile clean" />
+			<DistClean command="$make -f $makefile distclean$target" />
+			<AskRebuildNeeded command="$make -q -f $makefile " />
+			<SilentBuild command="$make -f $makefile  &gt; $(CMD_NULL)" />
+		</MakeCommands>
+		<Build>
+			<Target title="Release">
+				<Option type="4" />
+				<Option compiler="gcc" />
+				<Option parameters="-kernel ./bin/kernel" />
+				<Option host_application="/bin/qemu-system-x86_64" />
+				<Option run_host_application_in_terminal="0" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+				<MakeCommands>
+					<Build command="$make -f $makefile" />
+					<CompileFile command="$make -f $makefile" />
+					<Clean command="$make -f $makefile clean" />
+					<DistClean command="$make -f $makefile distclean$target" />
+					<AskRebuildNeeded command="$make -q -f $makefile" />
+					<SilentBuild command="$make -f $makefile &gt; $(CMD_NULL)" />
+				</MakeCommands>
+			</Target>
+			<Target title="Debug">
+				<Option type="4" />
+				<Option compiler="gcc" />
+				<Option parameters="-s -kernel ./bin/kernel" />
+				<Option host_application="/bin/qemu-system-x86_64" />
+				<Option run_host_application_in_terminal="0" />
+				<MakeCommands>
+					<Build command="$make -f $makefile" />
+					<CompileFile command="$make -f $makefile" />
+					<Clean command="$make -f $makefile clean" />
+					<DistClean command="$make -f $makefile distclean$target" />
+					<AskRebuildNeeded command="$make -q -f $makefile" />
+					<SilentBuild command="$make -f $makefile &gt; $(CMD_NULL)" />
+				</MakeCommands>
+			</Target>
+			<Target title="nga">
+				<Option output="bin/kernel" prefix_auto="1" extension_auto="1" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Option parameters="-s -kernel ./bin/kernel" />
+				<Option host_application="/bin/qemu-system-x86_64" />
+				<Option run_host_application_in_terminal="0" />
+				<MakeCommands>
+					<Build command="$make -f $makefile" />
+					<CompileFile command="$make -f $makefile" />
+					<Clean command="$make -f $makefile clean" />
+					<DistClean command="$make -f $makefile distclean$target" />
+					<AskRebuildNeeded command="$make -q -f $makefile" />
+					<SilentBuild command="$make -f $makefile &gt; $(CMD_NULL)" />
+				</MakeCommands>
+			</Target>
+			<Target title="BSOS_blocks">
+				<Option output="bin/BSOS_blocks/BSOS" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/BSOS_blocks/" />
+				<Option object_output="obj/BSOS_blocks/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+			<Target title="BSOS-blocks">
+				<Option output="bin/BSOS-blocks/BSOS" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/BSOS-blocks/" />
+				<Option object_output="obj/BSOS-blocks/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="Data/GDT.c">
+			<Option compilerVar="CC" />
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/GDT.h">
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/GDT.o">
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/IDT.c">
+			<Option compilerVar="CC" />
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/IDT.h">
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/IDT.o">
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/Interrupt.S" />
+		<Unit filename="Data/Meldungen.c">
+			<Option compilerVar="CC" />
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/Meldungen.h">
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/Meldungen.o">
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/Multitasking.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Data/Multitasking.h">
+			<Option virtualFolder="Data/" />
+		</Unit>
+		<Unit filename="Data/PIC.c">
+			<Option compilerVar="CC" />
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/PIC.h">
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/PIC.o">
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/SystemUhr.c">
+			<Option compilerVar="CC" />
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/SystemUhr.h">
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/SystemUhr.o">
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/TextMode.c">
+			<Option compilerVar="CC" />
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/TextMode.h">
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/TextMode.o">
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/Trap.c">
+			<Option compilerVar="CC" />
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/Trap.h">
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/Trap.o">
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/init.c">
+			<Option compilerVar="CC" />
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/init.h">
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/init.o">
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/start.S">
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/start.o">
+			<Option target="Release" />
+			<Option target="BSOS_blocks" />
+			<Option target="BSOS-blocks" />
+		</Unit>
+		<Unit filename="Data/stdint.h" />
+		<Extensions>
+			<code_completion>
+				<search_path add="/home/sroidl/Dokumente/BSOS/BSOS/" />
+			</code_completion>
+			<debugger>
+				<remote_debugging target="nga">
+					<options conn_type="0" serial_baud="115200" ip_address="localhost" ip_port="1234" />
+				</remote_debugging>
+			</debugger>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

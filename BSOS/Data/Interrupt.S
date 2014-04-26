@@ -137,30 +137,33 @@ common_itr_handler:
 
 .extern handle_software_interrupt
 sys_intr_handler:
-    // CPU-Zustand sichern
-    push %ebp
-    push %edi
-    push %esi
-    push %edx
-    push %ecx
-    push %ebx
-    push %eax
+  // CPU-Zustand sichern
+       push %ebp
+       push %edi
+       push %esi
+       push %edx
+       push %ecx
+       push %ebx
+       push %eax
 
-    // Handler aufrufen
-    push %esp
-    call handle_software_interrupt
-   // add $4, %esp
-    mov %eax, %esp
+    //Handler aufrufen
+    // Der Rueckgabewert ist der Prozessorzustand des moeglicherweise
+    // gewechselten Tasks. Wir muessen also den Stack dorthin wechseln
+    // um die Register wiederherzustellen.
+       push %esp
+         call handle_software_interrupt
+       mov %eax, %esp
+
     // CPU-Zustand wiederherstellen
-    pop %eax
-    pop %ebx
-    pop %ecx
-    pop %edx
-    pop %esi
-    pop %edi
-    pop %ebp
+       pop %eax
+       pop %ebx
+       pop %ecx
+       pop %edx
+       pop %esi
+       pop %edi
+       pop %ebp
 
     // Fehlercode und Interruptnummer vom Stack nehmen
-    add $8, %esp
+       add $8, %esp
 
     iret
