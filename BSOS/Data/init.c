@@ -21,5 +21,6 @@ void init(void)
  //AktiviereSchrittweisesAusfuehren();
  init_multitasking();
  SchreibeText("test");
+ //Hallo
  asm volatile("int $48");
 }

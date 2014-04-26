@@ -103,7 +103,7 @@ void FehlerMeldung1()
 {
 
 
-   // SchreibeText("Meldung1: Debug Trab/Fault");    //  Durch das trap flag das auf den STack kommt verschiebt sich alles ""ANPASSSEn!!
+    // SchreibeText("Meldung1: Debug Trab/Fault");    //  Durch das trap flag das auf den STack kommt verschiebt sich alles ""ANPASSSEn!!
     SchreibeText("step");
 //asm volatile ("hlt");
 }
@@ -359,91 +359,132 @@ void HardwareMeldung0( uint32_t esp)
     x++;
     switch(x)
     {
-    case 0: SchreibeText("0");
-    break;
-    case 10: SchreibeText("10");
-    break;
-    case 20: SchreibeText("20");
-    break;
-    case 30: SchreibeText("0");
-    break;
-    case 40: SchreibeText("10");
-    break;
-    case 50: SchreibeText("20");
-    break;
-    case 60: SchreibeText("0");
-    break;
-    case 70: SchreibeText("10");
-    break;
-    case 80: SchreibeText("20");
-    break;
-    case 90: SchreibeText("0");
-    break;
-    case 100: SchreibeText("10");
-    break;
-    case 110: SchreibeText("10");
-    break;
-    case 120: SchreibeText("20");
-    break;
-    case 130: SchreibeText("0");
-    break;
-    case 140: SchreibeText("10");
-    break;
-    case 150: SchreibeText("20");
-    break;
-    case 160: SchreibeText("0");
-    break;
-    case 170: SchreibeText("10");
-    break;
-    case 180: SchreibeText("20");
-    break;
-    case 190: SchreibeText("0");
-    break;
-    case 200: SchreibeText("200");
-    break;
-    case 210: SchreibeText("10");
-    break;
-    case 220: SchreibeText("20");
-    break;
-    case 230: SchreibeText("0");
-    break;
-    case 240: SchreibeText("10");
-    break;
-    case 250: SchreibeText("20");
-    break;
-    case 260: SchreibeText("0");
-    break;
-    case 270: SchreibeText("10");
-    break;
-    case 280: SchreibeText("20");
-    break;
-    case 290: SchreibeText("0");
-    break;
-    case 300: SchreibeText("10");
-    break;
-    case 310: SchreibeText("10");
-    break;
-    case 320: SchreibeText("20");
-    break;
-    case 330: SchreibeText("0");
-    break;
-    case 340: SchreibeText("10");
-    break;
-    case 350: SchreibeText("2");
-    break;
-    case 360: SchreibeText("0");
-    break;
-    case 370: SchreibeText("10");
-    break;
-    case 380: SchreibeText("20");
-    break;
-    case 390: SchreibeText("0");
-    break;
-    case 400: SchreibeText("400");
-    break;
+    case 0:
+        SchreibeText("0");
+        break;
+    case 10:
+        SchreibeText("10");
+        break;
+    case 20:
+        SchreibeText("20");
+        break;
+    case 30:
+        SchreibeText("0");
+        break;
+    case 40:
+        SchreibeText("10");
+        break;
+    case 50:
+        SchreibeText("20");
+        break;
+    case 60:
+        SchreibeText("0");
+        break;
+    case 70:
+        SchreibeText("10");
+        break;
+    case 80:
+        SchreibeText("20");
+        break;
+    case 90:
+        SchreibeText("0");
+        break;
+    case 100:
+        SchreibeText("10");
+        break;
+    case 110:
+        SchreibeText("10");
+        break;
+    case 120:
+        SchreibeText("20");
+        break;
+    case 130:
+        SchreibeText("0");
+        break;
+    case 140:
+        SchreibeText("10");
+        break;
+    case 150:
+        SchreibeText("20");
+        break;
+    case 160:
+        SchreibeText("0");
+        break;
+    case 170:
+        SchreibeText("10");
+        break;
+    case 180:
+        SchreibeText("20");
+        break;
+    case 190:
+        SchreibeText("0");
+        break;
+    case 200:
+        SchreibeText("200");
+        break;
+    case 210:
+        SchreibeText("10");
+        break;
+    case 220:
+        SchreibeText("20");
+        break;
+    case 230:
+        SchreibeText("0");
+        break;
+    case 240:
+        SchreibeText("10");
+        break;
+    case 250:
+        SchreibeText("20");
+        break;
+    case 260:
+        SchreibeText("0");
+        break;
+    case 270:
+        SchreibeText("10");
+        break;
+    case 280:
+        SchreibeText("20");
+        break;
+    case 290:
+        SchreibeText("0");
+        break;
+    case 300:
+        SchreibeText("10");
+        break;
+    case 310:
+        SchreibeText("10");
+        break;
+    case 320:
+        SchreibeText("20");
+        break;
+    case 330:
+        SchreibeText("0");
+        break;
+    case 340:
+        SchreibeText("10");
+        break;
+    case 350:
+        SchreibeText("2");
+        break;
+    case 360:
+        SchreibeText("0");
+        break;
+    case 370:
+        SchreibeText("10");
+        break;
+    case 380:
+        SchreibeText("20");
+        break;
+    case 390:
+        SchreibeText("0");
+        break;
+    case 400:
+        SchreibeText("400");
+        break;
     default:
-    SchreibeText("HardwareMeldung0");
-    break;
+        SchreibeText("HardwareMeldung0");
+        break;
     }
 
 }
@@ -609,26 +650,52 @@ void HardwareMeldung15(uint32_t esp)
 
 struct cpu_state* handle_software_interrupt(struct cpu_state* cpu)
 {
-struct cpu_state* new_cpu = cpu;
 
-new_cpu = schedule(cpu);
+    switch(cpu->intr)
+    {
+    case 0:
+        SoftwareMeldung0();
+        break;
+    case 1:
+        SoftwareMeldung1();
+        break;
+    case 2:
+        SoftwareMeldung2();
+        break;
+    default:
+        SchreibeText("Irgend etwas leuft falsch :(");
+        SchreibeText("--------------------------------------------------------------------------------");
+        SchreibeFormatiertenText("Hier ist das Ende ._.", 0x70, 'm');
+        SchreibeText("--------------------------------------------------------------------------------");
+        asm ("hlt");
+        }
 
-return new_cpu;
-
-}
+    }
 
 
 
 
 
-void SoftwareMeldung0(uint32_t esp)
-{
+    void SoftwareMeldung0(uint32_t esp)
+    {
+        SchreibeText("SoftwareMeldung0");
+    }
 
 
-    SchreibeText("SoftwareMeldung0");
+
+    void SoftwareMeldung1(uint32_t esp)
+    {
+        SchreibeText("SoftwareMeldung1");
+    }
 
 
-}
+
+    void SoftwareMeldung2(uint32_t esp, str)
+    {
+      struct cpu_state* new_cpu = cpu;
+         new_cpu = schedule(cpu);
+         return new_cpu;
+    }
 
 
 
