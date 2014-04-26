@@ -6,12 +6,13 @@
 void task_a()
 {
 SchreibeText("Task A");
-asm ("hlt");
+asm volatile ("hlt");
 }
 
 void task_b()
 {
 SchreibeText("Task B");
+asm ("hlt");
 }
 
 static uint8_t stack_a[4096];
@@ -66,7 +67,8 @@ static struct cpu_state* task_states[2];
 void init_multitasking(void)
 {
     task_states[0] = init_task(stack_a, task_a);
-    task_states[1] = init_task(stack_b, task_b);
+    task_states[1] = init_task(stack_a, task_a);
+    task_states[2] = init_task(stack_b, task_b);
 }
 
 /*
@@ -81,9 +83,9 @@ struct cpu_state* schedule(struct cpu_state* cpu)
      * gerade zum ersten Mal in einen Task. Diesen Prozessorzustand brauchen
      * wir spaeter nicht wieder.
      */
-    if (current_task >= 0) {
+  //  if (current_task >= 0) {
         task_states[current_task] = cpu;
-    }
+    //}
 
     /*
      * Naechsten Task auswaehlen. Wenn alle durch sind, geht es von vorne los
