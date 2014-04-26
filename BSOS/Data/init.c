@@ -19,7 +19,7 @@ void init(void)
    //asm ("int $32");
  //  SchreibeText("Test");
  //AktiviereSchrittweisesAusfuehren();
-//init_multitasking();
+ init_multitasking();
  SchreibeText("test");
  asm volatile("int $48");
 }

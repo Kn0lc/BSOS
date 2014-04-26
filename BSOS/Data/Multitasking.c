@@ -6,6 +6,7 @@
 void task_a()
 {
 SchreibeText("Task A");
+asm ("hlt");
 }
 
 void task_b()
