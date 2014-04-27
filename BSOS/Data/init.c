@@ -15,12 +15,11 @@ void init(void)
     init_gdt();
     load_idt();
   //pit_init(1);
- // SchreibeText("test1");
-   //asm ("int $32");
- //  SchreibeText("Test");
  //AktiviereSchrittweisesAusfuehren();
  init_multitasking();
  SchreibeText("test");
  //Hallo
  asm volatile("int $48");
+ SchreibeText("Welcome back // Wilkommen Zurueck ");
+ SchreibeText("Oder auch: Das Betiebsystem ist am Ende (mit den Nerver)");
 }

@@ -50,7 +50,10 @@ extern void HardwareMeldungasm14(void);
 extern void HardwareMeldungasm15(void);
 
 extern void SoftwareMeldungasm0(void);
-
+extern void SoftwareMeldungasm1(void);
+extern void SoftwareMeldungasm2(void);
+extern void SoftwareMeldungasm3(void);
+extern void SoftwareMeldungasm4(void);
 
 static uint64_t idt[IDT_ENTRIES];
 
@@ -143,6 +146,10 @@ void load_idt(void)
     idt_set_entry(47, HardwareMeldungasm15, 0x8, IDT_FLAG_INTERRUPT_GATE | IDT_FLAG_RING0 | IDT_FLAG_PRESENT);
 // Syscall
     idt_set_entry(48, SoftwareMeldungasm0, 0x8, IDT_FLAG_INTERRUPT_GATE | IDT_FLAG_RING3 | IDT_FLAG_PRESENT);
+    idt_set_entry(49, SoftwareMeldungasm1, 0x8, IDT_FLAG_INTERRUPT_GATE | IDT_FLAG_RING3 | IDT_FLAG_PRESENT);
+    idt_set_entry(50, SoftwareMeldungasm2, 0x8, IDT_FLAG_INTERRUPT_GATE | IDT_FLAG_RING3 | IDT_FLAG_PRESENT);
+    idt_set_entry(51, SoftwareMeldungasm3, 0x8, IDT_FLAG_INTERRUPT_GATE | IDT_FLAG_RING3 | IDT_FLAG_PRESENT);
+    idt_set_entry(52, SoftwareMeldungasm4, 0x8, IDT_FLAG_INTERRUPT_GATE | IDT_FLAG_RING3 | IDT_FLAG_PRESENT); //////////////Bei Neuen Interrupts die Interrupt.S nicht vergessen zu erweitern !
     asm volatile("lidt %0" : : "m" (idtp));
 
     asm volatile("sti");

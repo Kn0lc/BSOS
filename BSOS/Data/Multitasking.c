@@ -3,17 +3,24 @@
 #include "Meldungen.h"
 #include "Multitasking.h"
 #include "init.h"
+#include "ProgrammVerwaltung.h"
 
 void task_a()
 {
+while(1)
+{
 SchreibeText("Task A");
-asm ("int $48");
+asm ("int $49");
+}
 }
 
 void task_b()
 {
+while(1)
+{
 SchreibeText("Task B");
 asm ("int $48");
+}
 }
 
 static uint8_t stack_kernel[4096];
@@ -66,6 +73,8 @@ struct cpu_state* init_task(uint8_t* stack, void* entry)
 static int current_task = -1;
 static int num_tasks = 2;
 static struct cpu_state* task_states[3];
+static struct cpu_state* baseKernel;
+
 
 void init_multitasking(void)
 {
@@ -89,7 +98,17 @@ struct cpu_state* schedule(struct cpu_state* cpu)
      */
 if(current_task>=0)
 {
+
         task_states[current_task] = cpu; //Sicherung funktioniert nicht !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+}
+else if(current_task==-1)
+{
+        baseKernel = cpu;
+}
+else
+{
+SchreibeText("Was ist den Da Los??? (Dieser Task  hat nicht die Richtige Nummer: current_task ist wohl kleiner als -1");
+ZurueckZuInit();
 }
     /*
      * Naechsten Task auswaehlen. Wenn alle durch sind, geht es von vorne los
@@ -99,11 +118,16 @@ if(current_task>=0)
     current_task %= num_tasks;
 
     /* Prozessorzustand des neuen Tasks aktivieren */
-   // cpu = task_states[current_task];
+    cpu = task_states[current_task];
 
 
+    return cpu;
+}
 
-struct cpu_state* test = task_states[current_task];
-
-    return test;
+///////////////////SoftwareMdlung1 muss hier blein-///- siehe Multitasking.h//////////////////////////////////////////////////////////////////////
+struct cpu_state* SoftwareMeldung1(struct cpu_state* cpu) ///////informationen warum SoftwareMeldung 1 nicht in Meldungen.c liet in Multitasking.h
+{
+    SchreibeText("Willkommen Daheim :D");
+    cpu = baseKernel;
+    return cpu;
 }

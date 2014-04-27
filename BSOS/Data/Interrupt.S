@@ -73,6 +73,10 @@ hardware 15
 
 // Syscall
 sys 0
+sys 1
+sys 2
+sys 3
+sys 4
 
 .extern handle_hardware_interrupt
 hardware_intr_handler:

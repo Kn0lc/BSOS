@@ -113,8 +113,11 @@ void HardwareMeldung13();
 void HardwareMeldung14();
 void HardwareMeldung15();
 
-struct cpu_state*  SoftwareMeldung0();
-void SoftwareMeldung1();
+struct cpu_state*  SoftwareMeldung0(struct cpu_state* cpu);
+struct cpu_state* SoftwareMeldung1(struct cpu_state* cpu);
+void SoftwareMeldung2();
+void SoftwareMeldung3();
+void SoftwareMeldung4();
 
 
 void handle_interrupt(struct cpu_state* cpu);

@@ -90,7 +90,7 @@ void handle_interrupt(struct cpu_state* cpu)
 }
 
 
-void FehlerMeldung0(uint32_t esp)
+void FehlerMeldung0()
 {
     SchreibeText("Es wurde durch 0 geteilt");
     SchreibeText("--------------------------------------------------------------------------------");
@@ -108,7 +108,7 @@ void FehlerMeldung1()
 //asm volatile ("hlt");
 }
 
-void FehlerMeldung2(uint32_t esp)
+void FehlerMeldung2()
 {
 
 
@@ -117,7 +117,7 @@ void FehlerMeldung2(uint32_t esp)
 
 }
 
-void FehlerMeldung3(uint32_t esp)
+void FehlerMeldung3()
 {
 
 
@@ -126,19 +126,19 @@ void FehlerMeldung3(uint32_t esp)
 
 }
 
-void FehlerMeldung4(uint32_t esp)
+void FehlerMeldung4()
 {
     SchreibeText("Meldung4: Overfolw");
 
 }
 
-void FehlerMeldung5(uint32_t esp)
+void FehlerMeldung5()
 {
     SchreibeText("Meldung5: Bound Range");
 
 }
 
-void FehlerMeldung6(uint32_t esp)
+void FehlerMeldung6()
 {
 
     SchreibeText("Meldung6: Invalid Opcode Exception");
@@ -148,7 +148,7 @@ void FehlerMeldung6(uint32_t esp)
 
 }
 
-void FehlerMeldung7(uint32_t esp)
+void FehlerMeldung7()
 {
 
     SchreibeText("Meldung7: Device Not available");
@@ -157,7 +157,7 @@ void FehlerMeldung7(uint32_t esp)
 
 }
 
-void FehlerMeldung8(uint32_t esp)
+void FehlerMeldung8()
 {
 
     SchreibeText("Meldung8: Double Foult");
@@ -166,7 +166,7 @@ void FehlerMeldung8(uint32_t esp)
 
 }
 
-void FehlerMeldung9(uint32_t esp)
+void FehlerMeldung9()
 {
 
 
@@ -176,7 +176,7 @@ void FehlerMeldung9(uint32_t esp)
 
 }
 
-void FehlerMeldung10(uint32_t esp)
+void FehlerMeldung10()
 {
 
     SchreibeText("Meldung10: Invalid TSS");
@@ -185,7 +185,7 @@ void FehlerMeldung10(uint32_t esp)
 
 }
 
-void FehlerMeldung11(uint32_t esp)
+void FehlerMeldung11()
 {
 
     SchreibeText("Meldung11: Segment not Present");
@@ -194,7 +194,7 @@ void FehlerMeldung11(uint32_t esp)
 
 }
 
-void FehlerMeldung12(uint32_t esp)
+void FehlerMeldung12()
 {
 
     SchreibeText("Meldung12: Stack Fault");
@@ -203,7 +203,7 @@ void FehlerMeldung12(uint32_t esp)
 
 }
 
-void FehlerMeldung13(uint32_t esp)
+void FehlerMeldung13()
 {
 
     SchreibeText("Meldung13: General Protection");
@@ -211,7 +211,7 @@ void FehlerMeldung13(uint32_t esp)
 
 }
 
-void FehlerMeldung14(uint32_t esp)
+void FehlerMeldung14()
 {
 
 
@@ -220,7 +220,7 @@ void FehlerMeldung14(uint32_t esp)
 
 }
 
-void FehlerMeldung15(uint32_t esp)
+void FehlerMeldung15()
 {
 
 
@@ -229,7 +229,7 @@ void FehlerMeldung15(uint32_t esp)
 
 }
 
-void FehlerMeldung16(uint32_t esp)
+void FehlerMeldung16()
 {
 
 
@@ -238,7 +238,7 @@ void FehlerMeldung16(uint32_t esp)
 
 }
 
-void FehlerMeldung17(uint32_t esp)
+void FehlerMeldung17()
 {
 
     SchreibeText("Meldung17: Alignment Check");
@@ -246,7 +246,7 @@ void FehlerMeldung17(uint32_t esp)
 
 }
 
-void FehlerMeldung18(uint32_t esp)
+void FehlerMeldung18()
 {
 
 
@@ -255,7 +255,7 @@ void FehlerMeldung18(uint32_t esp)
 
 }
 
-void FehlerMeldung19(uint32_t esp)
+void FehlerMeldung19()
 {
 
     SchreibeText("Meldung19: SIMD Floating Point");
@@ -354,7 +354,7 @@ void handle_hardware_interrupt(struct cpu_state* cpu)
 static int x=0;
 
 
-void HardwareMeldung0( uint32_t esp)
+void HardwareMeldung0( )
 {
     x++;
     switch(x)
@@ -489,7 +489,7 @@ void HardwareMeldung0( uint32_t esp)
 
 }
 
-void HardwareMeldung1(uint32_t esp)
+void HardwareMeldung1()
 {
 
 
@@ -499,7 +499,7 @@ void HardwareMeldung1(uint32_t esp)
 
 }
 
-void HardwareMeldung2(uint32_t esp)
+void HardwareMeldung2()
 {
 
 
@@ -509,7 +509,7 @@ void HardwareMeldung2(uint32_t esp)
 
 }
 
-void HardwareMeldung3(uint32_t esp)
+void HardwareMeldung3()
 {
 
 
@@ -519,7 +519,7 @@ void HardwareMeldung3(uint32_t esp)
 
 }
 
-void HardwareMeldung4(uint32_t esp)
+void HardwareMeldung4()
 {
 
 
@@ -529,7 +529,7 @@ void HardwareMeldung4(uint32_t esp)
 
 }
 
-void HardwareMeldung5(uint32_t esp)
+void HardwareMeldung5()
 {
 
 
@@ -539,7 +539,7 @@ void HardwareMeldung5(uint32_t esp)
 
 }
 
-void HardwareMeldung6(uint32_t esp)
+void HardwareMeldung6()
 {
 
 
@@ -549,7 +549,7 @@ void HardwareMeldung6(uint32_t esp)
 
 }
 
-void HardwareMeldung7(uint32_t esp)
+void HardwareMeldung7()
 {
 
 
@@ -559,7 +559,7 @@ void HardwareMeldung7(uint32_t esp)
 
 }
 
-void HardwareMeldung8(uint32_t esp)
+void HardwareMeldung8()
 {
 
 
@@ -568,7 +568,7 @@ void HardwareMeldung8(uint32_t esp)
 
 }
 
-void HardwareMeldung9(uint32_t esp)
+void HardwareMeldung9()
 {
 
 
@@ -578,7 +578,7 @@ void HardwareMeldung9(uint32_t esp)
 
 }
 
-void HardwareMeldung10(uint32_t esp)
+void HardwareMeldung10()
 {
 
 
@@ -588,7 +588,7 @@ void HardwareMeldung10(uint32_t esp)
 
 }
 
-void HardwareMeldung11(uint32_t esp)
+void HardwareMeldung11()
 {
 
 
@@ -598,7 +598,7 @@ void HardwareMeldung11(uint32_t esp)
 
 }
 
-void HardwareMeldung12(uint32_t esp)
+void HardwareMeldung12()
 {
 
 
@@ -608,7 +608,7 @@ void HardwareMeldung12(uint32_t esp)
 
 }
 
-void HardwareMeldung13(uint32_t esp)
+void HardwareMeldung13()
 {
 
 
@@ -618,7 +618,7 @@ void HardwareMeldung13(uint32_t esp)
 
 }
 
-void HardwareMeldung14(uint32_t esp)
+void HardwareMeldung14()
 {
 
 
@@ -628,7 +628,7 @@ void HardwareMeldung14(uint32_t esp)
 
 }
 
-void HardwareMeldung15(uint32_t esp)
+void HardwareMeldung15()
 {
 
 
@@ -657,7 +657,16 @@ struct cpu_state* handle_software_interrupt(struct cpu_state* cpu)
         cpu=SoftwareMeldung0(cpu);
         break;
     case 1:
-        SoftwareMeldung1();
+        cpu=SoftwareMeldung1(cpu);
+        break;
+    case 2:
+        SoftwareMeldung2();
+        break;
+    case 3:
+        SoftwareMeldung3();
+        break;
+    case 4:
+        SoftwareMeldung4();
         break;
 
     default:
@@ -676,22 +685,29 @@ struct cpu_state* handle_software_interrupt(struct cpu_state* cpu)
 
 
 
-struct cpu_state* SoftwareMeldung0(uint32_t esp, struct cpu_state* cpu)
+struct cpu_state* SoftwareMeldung0(struct cpu_state* cpu)
 {
-    SchreibeText("SoftwareMeldung0");
-
-    struct cpu_state* new_cpu = cpu;
-    new_cpu = schedule(cpu);
-    return new_cpu;
+    cpu = schedule(cpu);
+    return cpu;
 }
 
 
 
-void SoftwareMeldung1(uint32_t esp)
+
+void SoftwareMeldung2()
 {
-    SchreibeText("SoftwareMeldung1");
+    SchreibeText("SoftwareMeldung 2");
 }
 
+void SoftwareMeldung3()
+{
+    SchreibeText("SoftwareMeldung 3");
+}
+
+void SoftwareMeldung4()
+{
+    SchreibeText("SoftwareMeldung 4");
+}
 
 
 
